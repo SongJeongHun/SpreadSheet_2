@@ -40,7 +40,12 @@ class SpreadListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let cell = sender as? UITableViewCell,let index = tableView.indexPath(for: cell) else {return}
         if let vc = segue.destination as? SpreadSheetViewController{
-            vc.sheet = listVM.sheet[index.row]
+            let sheet =  listVM.sheet[index.row]
+            vc.layout.sheetVM = sheetViewModel(sheet: sheet)
+            if (vc.layout.sheetVM.sheet.layoutStandard.count == 0){            vc.layout.sheetVM.initStandard()
+            }
+      
+          
         }
     }
 }

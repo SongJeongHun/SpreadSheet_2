@@ -8,29 +8,36 @@
 import UIKit
 
 class SpreadSheetViewController: UIViewController,UICollectionViewDataSource {
-    var collectionView:UICollectionView!
-    var sheet:SheetModel!
+    @IBOutlet weak var collectionView:UICollectionView!
+    var buttonTop:UIButton = UIButton()
+    var buttonBottom:UIButton = UIButton()
+    var selectedCell:[IndexPath] = []
     var layout = SheetCustomLayout()
     override func viewDidLoad() {
         super.viewDidLoad()
-        layout.sheet = sheet
-        if (sheet.layoutStandard.count == 0){
-            layout.clVM.initStandard()
-        }
-        layout.clVM = sheetViewModel(sheet: sheet)
-        collectionView = UICollectionView(frame: CGRect(origin: CGPoint(x: 0,y: 0), size: layout.attributeKit.contentSize), collectionViewLayout: layout)
+        collectionView.collectionViewLayout = layout
     }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sheet.colums
+        return layout.sheetVM.sheet.colums
     }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sheet.rows
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return layout.sheetVM.sheet.rows
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        return cellForItem(self.collectionView,indexPath)
     }
-    
+}
+extension SpreadSheetViewController:UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if selectedCell.contains(indexPath){
+            return inactiveCell(self.collectionView,indexPath)
+        }else{
+            return activeCell(self.collectionView,indexPath)
+        }
+    }
+}
+class spreadSheetCell:UICollectionViewCell{
+    @IBOutlet weak var text:UILabel!
 }
 
