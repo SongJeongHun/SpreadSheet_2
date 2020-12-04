@@ -146,8 +146,8 @@
                         <viewLayoutGuide key="safeArea" id="W0H-mq-GgI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Fay-ZR-OF8" firstAttribute="top" secondItem="W0H-mq-GgI" secondAttribute="top" id="6Nl-iV-iJc"/>
                             <constraint firstItem="Fay-ZR-OF8" firstAttribute="leading" secondItem="W0H-mq-GgI" secondAttribute="leading" id="Ncn-bK-9PU"/>
+                            <constraint firstItem="Fay-ZR-OF8" firstAttribute="top" secondItem="W0H-mq-GgI" secondAttribute="top" id="TkG-8w-cOE"/>
                             <constraint firstItem="Fay-ZR-OF8" firstAttribute="trailing" secondItem="W0H-mq-GgI" secondAttribute="trailing" id="dtw-aK-IV2"/>
                             <constraint firstItem="W0H-mq-GgI" firstAttribute="bottom" secondItem="Fay-ZR-OF8" secondAttribute="bottom" id="nTs-gg-p4Q"/>
                         </constraints>
@@ -155,7 +155,20 @@
                     <toolbarItems>
                         <barButtonItem title="Item" id="tRa-CR-rZs"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="KTv-e4-Icx"/>
+                    <navigationItem key="navigationItem" id="KTv-e4-Icx">
+                        <nil key="title"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="RgG-XZ-Fcb">
+                            <rect key="frame" x="138" y="7" width="138" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" title="제목없는 스프레드 시트">
+                                <color key="titleColor" systemColor="labelColor"/>
+                            </state>
+                            <connections>
+                                <action selector="modifySheetName:" destination="FBE-9J-pqf" eventType="touchUpInside" id="3PX-Ue-mL2"/>
+                            </connections>
+                        </button>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="Fay-ZR-OF8" id="tbH-fP-iCO"/>
@@ -172,6 +185,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VBF-rU-UnW">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="0.19072799400000001" green="0.3823267487" blue="0.15033159090000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="6fQ-yt-sTU" kind="relationship" relationship="rootViewController" id="E6g-Ad-VLS"/>
@@ -184,6 +200,9 @@
     </scenes>
     <resources>
         <image name="doc.plaintext" catalog="system" width="115" height="128"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -9,9 +9,6 @@ import UIKit
 class SheetCustomLayout:UICollectionViewLayout{
     var attributeKit = SheetAttributeKit()
     var sheetVM:sheetViewModel!
-    var buttonTop:UIButton = UIButton()
-    var buttonBottom:UIButton = UIButton()
-    var selectedCell:[IndexPath] = []
     override var collectionViewContentSize:CGSize{
         return attributeKit.contentSize
     }
@@ -29,7 +26,6 @@ class SheetCustomLayout:UICollectionViewLayout{
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return attributeKit.sectionAttribute
     }
-    
 }
 extension SheetCustomLayout{
     func createCell(collectionView:UICollectionView){
@@ -61,7 +57,6 @@ extension SheetCustomLayout{
         }
         setContentOff(x: x, y: y)
     }
-    
     func fixHeader(at collectionView:UICollectionView,forElement : [UICollectionViewLayoutAttributes]){
         for section in 0..<collectionView.numberOfSections{
             for index in 0..<sheetVM.sheet.colums{
@@ -84,7 +79,6 @@ extension SheetCustomLayout{
                 frame.origin = CGPoint(x: collectionView.contentOffset.x,y: collectionView.contentOffset.y)
                 layout.frame = frame
                 layout.zIndex = 101
-                
             }
         }
     }

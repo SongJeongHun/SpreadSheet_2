@@ -10,11 +10,22 @@ import UIKit
 class SpreadListViewController: UITableViewController {
     var listVM = ListViewModel()
     var name:String = ""
+    var token:NSObjectProtocol?
+    deinit{
+        if let token = token{
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
     @IBAction func addList(_ sender:UIButton){
         listVM.addSheet(name: name)
         self.tableView.reloadData()
     }
     override func viewDidLoad() {
+        super.viewDidLoad()
+        token = NotificationCenter.default.addObserver(forName: SpreadSheetViewController.modifyFinished, object: nil, queue: OperationQueue.main) { noti in
+            print(self.listVM.sheet)
+            self.tableView.reloadData()
+        }
         let loginViewModel = LoginViewModel(login: loginModel(id: "124sjh", name: "송정훈", pwd: "1"))
         name = loginViewModel.getName()
     }
@@ -40,12 +51,12 @@ class SpreadListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let cell = sender as? UITableViewCell,let index = tableView.indexPath(for: cell) else {return}
         if let vc = segue.destination as? SpreadSheetViewController{
-            let sheet =  listVM.sheet[index.row]
-            vc.layout.sheetVM = sheetViewModel(sheet: sheet)
-            if (vc.layout.sheetVM.sheet.layoutStandard.count == 0){            vc.layout.sheetVM.initStandard()
+            //수정 -> Class or Struct
+            //값 참조
+            vc.layout.sheetVM = sheetViewModel(sheet: &listVM.sheet[index.row])
+            if (vc.layout.sheetVM.sheet.layoutStandard.count == 0){
+                vc.layout.sheetVM.initStandard()
             }
-      
-          
         }
     }
 }

@@ -15,8 +15,10 @@ extension SpreadSheetViewController{
         if let touch = touches.first{
             guard let collectionView = sender.superview as? UICollectionView else {return}
             let point = touch.location(in: sender.superview)
+            //셀 크기 수정 indexpath?
             let item = Int(floor(point.x)) / 100
             let section = Int(floor(point.y)) / 25
+            //
             let indexPath = IndexPath(item: item, section: section)
             guard !selectedCell.contains(indexPath) else {return}
             active(cellForItem(collectionView, indexPath), indexPath)

@@ -8,8 +8,10 @@
 import Foundation
 class sheetViewModel{
     var sheet:SheetModel
-    init(sheet:SheetModel){
+    init(sheet:inout SheetModel){
+        print(sheet)
         self.sheet = sheet
+        print(self.sheet)
     }
     func initStandard(){
         var section:[CellModel] = []
@@ -21,6 +23,9 @@ class sheetViewModel{
             }
             sheet.layoutStandard.append(section)
         }
+    }
+    func alterSheetName(name:String){
+        self.sheet.sheetName = name
     }
     func readSheet() -> [CellModel]{
         var newArray:[CellModel] = []
