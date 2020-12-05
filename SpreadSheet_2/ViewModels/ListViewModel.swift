@@ -7,6 +7,7 @@
 import Foundation
 class ListViewModel{
     var sheet:[SheetModel]
+    var currentIndex:Int = 0
     let formatter: DateFormatter = {
         let f = DateFormatter()
         f.timeStyle = .long

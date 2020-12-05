@@ -8,7 +8,7 @@
 import UIKit
 class SheetCustomLayout:UICollectionViewLayout{
     var attributeKit = SheetAttributeKit()
-    var sheetVM:sheetViewModel!
+    var sheetVM:ListViewModel!
     override var collectionViewContentSize:CGSize{
         return attributeKit.contentSize
     }
@@ -29,14 +29,14 @@ class SheetCustomLayout:UICollectionViewLayout{
 }
 extension SheetCustomLayout{
     func createCell(collectionView:UICollectionView){
-        let standard = sheetVM.sheet.layoutStandard
+        let standard = sheetVM.sheet[sheetVM.currentIndex].layoutStandard
         var x = attributeKit.contentOffx
         var y = attributeKit.contentOffy
         var contentwidth:CGFloat = 0
         var attribute:[UICollectionViewLayoutAttributes]
         for section in attributeKit.pointerSection..<collectionView.numberOfSections{
             attribute = []
-            for item in attributeKit.pointerItem..<sheetVM.sheet.colums{
+            for item in attributeKit.pointerItem..<sheetVM.sheet[sheetVM.currentIndex].colums{
                 let indexPath = IndexPath(item: item, section: section)
                 let layout = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                 let cell = standard[section][item]
@@ -44,7 +44,7 @@ extension SheetCustomLayout{
                 attribute.append(layout)
                 attributeKit.sectionAttribute.append(layout)
                 x +=  cell.width
-                if x / cell.width ==  sheetVM.sheet.colums {
+                if x / cell.width ==  sheetVM.sheet[sheetVM.currentIndex].colums {
                     contentwidth = CGFloat(x)
                     x = 0
                     y += cell.height
@@ -59,9 +59,9 @@ extension SheetCustomLayout{
     }
     func fixHeader(at collectionView:UICollectionView,forElement : [UICollectionViewLayoutAttributes]){
         for section in 0..<collectionView.numberOfSections{
-            for index in 0..<sheetVM.sheet.colums{
+            for index in 0..<sheetVM.sheet[sheetVM.currentIndex].colums{
                 let layouts = forElement
-                let indexs = sheetVM.sheet.colums * section
+                let indexs = sheetVM.sheet[sheetVM.currentIndex].colums * section
                 //0열 고정
                 var frame = layouts[indexs].frame
                 frame.origin.x = collectionView.contentOffset.x

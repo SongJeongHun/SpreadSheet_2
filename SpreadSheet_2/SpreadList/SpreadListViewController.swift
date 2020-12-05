@@ -23,7 +23,6 @@ class SpreadListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         token = NotificationCenter.default.addObserver(forName: SpreadSheetViewController.modifyFinished, object: nil, queue: OperationQueue.main) { noti in
-            print(self.listVM.sheet)
             self.tableView.reloadData()
         }
         let loginViewModel = LoginViewModel(login: loginModel(id: "124sjh", name: "송정훈", pwd: "1"))
@@ -53,8 +52,10 @@ class SpreadListViewController: UITableViewController {
         if let vc = segue.destination as? SpreadSheetViewController{
             //수정 -> Class or Struct
             //값 참조
-            vc.layout.sheetVM = sheetViewModel(sheet: &listVM.sheet[index.row])
-            if (vc.layout.sheetVM.sheet.layoutStandard.count == 0){
+            self.listVM.currentIndex = index.row
+            vc.layout.sheetVM = listVM
+            vc.sheetName.setTitle(listVM.sheet[listVM.currentIndex].sheetName, for: .normal)
+            if (vc.layout.sheetVM.sheet[listVM.currentIndex].layoutStandard.count == 0){
                 vc.layout.sheetVM.initStandard()
             }
         }

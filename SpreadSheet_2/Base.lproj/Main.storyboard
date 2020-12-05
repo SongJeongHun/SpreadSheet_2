@@ -157,7 +157,7 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="KTv-e4-Icx">
                         <nil key="title"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="RgG-XZ-Fcb">
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="RgG-XZ-Fcb">
                             <rect key="frame" x="138" y="7" width="138" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -172,6 +172,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="Fay-ZR-OF8" id="tbH-fP-iCO"/>
+                        <outlet property="sheetName" destination="RgG-XZ-Fcb" id="cmV-G8-sDL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nn1-Vq-b8r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
