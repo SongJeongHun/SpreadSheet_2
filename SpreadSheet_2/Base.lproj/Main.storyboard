@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -157,12 +158,12 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="KTv-e4-Icx">
                         <nil key="title"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="RgG-XZ-Fcb">
-                            <rect key="frame" x="138" y="7" width="138" height="30"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RgG-XZ-Fcb">
+                            <rect key="frame" x="113" y="9.5" width="188" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" title="제목없는 스프레드 시트">
                                 <color key="titleColor" systemColor="labelColor"/>
+                                <imageReference key="image" image="pencil" catalog="system" renderingMode="original"/>
                             </state>
                             <connections>
                                 <action selector="modifySheetName:" destination="FBE-9J-pqf" eventType="touchUpInside" id="3PX-Ue-mL2"/>
@@ -201,6 +202,7 @@
     </scenes>
     <resources>
         <image name="doc.plaintext" catalog="system" width="115" height="128"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
