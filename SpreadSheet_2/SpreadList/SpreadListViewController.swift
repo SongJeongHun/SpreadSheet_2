@@ -50,8 +50,6 @@ class SpreadListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let cell = sender as? UITableViewCell,let index = tableView.indexPath(for: cell) else {return}
         if let vc = segue.destination as? SpreadSheetViewController{
-            //수정 -> Class or Struct
-            //값 참조
             self.listVM.currentIndex = index.row
             vc.layout.sheetVM = listVM
             vc.sheetName.setTitle(listVM.sheet[listVM.currentIndex].sheetName, for: .normal)

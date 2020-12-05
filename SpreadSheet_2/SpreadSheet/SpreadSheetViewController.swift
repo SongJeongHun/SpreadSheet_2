@@ -19,10 +19,7 @@ class SpreadSheetViewController: UIViewController,UICollectionViewDataSource {
         alert.addTextField(configurationHandler: nil)
         let ok = UIAlertAction(title: "확인", style: .default, handler: {ok in
             guard let valStr = alert.textFields?[0].text else { return }
-            self.layout.sheetVM.sheet[self.layout.sheetVM.currentIndex].sheetName = valStr
-            //Struct = 복사 -> 대입
-            //Class = 참조
-            //값 넘어가는거 수정
+            self.layout.sheetVM.alterSheetName(name: valStr)
             sender.setTitle(valStr, for: .normal)
             NotificationCenter.default.post(name: SpreadSheetViewController.modifyFinished, object: nil)
             self.collectionView.reloadData()
@@ -37,10 +34,10 @@ class SpreadSheetViewController: UIViewController,UICollectionViewDataSource {
         collectionView.collectionViewLayout = layout
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return layout.sheetVM.sheet[layout.sheetVM.currentIndex].colums
+        return layout.sheetVM.currentSheet().colums
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return layout.sheetVM.sheet[layout.sheetVM.currentIndex].rows
+        return layout.sheetVM.currentSheet().rows
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -21,4 +21,7 @@ extension ListViewModel{
     func alterSheetName(name:String){
         self.sheet[currentIndex].sheetName = name
     }
+    func currentSheet() -> SheetModel{
+        return sheet[currentIndex]
+    }
 }
